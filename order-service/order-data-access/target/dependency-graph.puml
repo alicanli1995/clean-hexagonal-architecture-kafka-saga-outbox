@@ -1,0 +1,12 @@
+@startuml
+skinparam defaultTextAlignment center
+skinparam rectangle {
+  BackgroundColor<<optional>> beige
+  BackgroundColor<<test>> lightGreen
+  BackgroundColor<<runtime>> lightBlue
+  BackgroundColor<<provided>> lightGray
+}
+rectangle "order-data-access" as com_food_order_order_data_access_jar
+rectangle "order-application-service" as com_food_order_order_application_service_jar
+com_food_order_order_data_access_jar -[#000000]-> com_food_order_order_application_service_jar
+@enduml
