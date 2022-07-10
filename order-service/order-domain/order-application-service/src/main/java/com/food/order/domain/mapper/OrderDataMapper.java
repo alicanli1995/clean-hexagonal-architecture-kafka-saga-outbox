@@ -3,6 +3,7 @@ package com.food.order.domain.mapper;
 import com.food.order.domain.dto.create.CreateOrderCommand;
 import com.food.order.domain.dto.create.CreateOrderResponse;
 import com.food.order.domain.dto.create.OrderAddress;
+import com.food.order.domain.dto.track.TrackOrderResponse;
 import com.food.order.domain.valueobject.CustomerId;
 import com.food.order.domain.valueobject.Money;
 import com.food.order.domain.valueobject.ProductId;
@@ -21,24 +22,34 @@ import java.util.stream.Collectors;
 @Component
 public class OrderDataMapper {
 
+    public TrackOrderResponse orderToTrackOrderResponse(Order order) {
+
+        return TrackOrderResponse.builder()
+                .orderTrackingId(order.getTrackingId().getValue())
+                .orderStatus(order.getStatus())
+                .failureMessages(order.getFailureMessages())
+                .build();
+    }
+
+
     public Restaurant createOrderCommandToRestaurant(CreateOrderCommand createOrderCommand) {
         return Restaurant.builder()
-                .id(new RestaurantId(createOrderCommand.getRestaurantId()))
-                .products(createOrderCommand.getOrderItems().stream()
+                .id(new RestaurantId(createOrderCommand.restaurantId()))
+                .products(createOrderCommand.orderItems().stream()
                         .map(orderItem ->
-                            new Product(new ProductId(orderItem.getProductId())))
-                                    .collect(Collectors.toList())
+                            new Product(new ProductId(orderItem.productId())))
+                                    .toList()
                         )
                 .build();
     }
 
     public Order createOrderCommandToOrder(CreateOrderCommand createOrderCommand) {
         return Order.builder()
-                .customerId(new CustomerId(createOrderCommand.getCustomerId()))
-                .restaurantId(new RestaurantId(createOrderCommand.getRestaurantId()))
-                .deliveryAddress(orderAddressToStreetAddress(createOrderCommand.getOrderAddress()))
-                .price(new Money(createOrderCommand.getPrice()))
-                .items(orderItemsToOrderItemEntities(createOrderCommand.getOrderItems()))
+                .customerId(new CustomerId(createOrderCommand.customerId()))
+                .restaurantId(new RestaurantId(createOrderCommand.restaurantId()))
+                .deliveryAddress(orderAddressToStreetAddress(createOrderCommand.orderAddress()))
+                .price(new Money(createOrderCommand.price()))
+                .items(orderItemsToOrderItemEntities(createOrderCommand.orderItems()))
                 .build();
     }
 
@@ -46,10 +57,10 @@ public class OrderDataMapper {
         return orderItems.stream()
                 .map(orderItem ->
                     OrderItem.builder()
-                            .product(new Product(new ProductId(orderItem.getProductId())))
-                            .price(new Money(orderItem.getPrice()))
-                            .quantity(orderItem.getQuantity())
-                            .subTotal(new Money(orderItem.getSubTotal()))
+                            .product(new Product(new ProductId(orderItem.productId())))
+                            .price(new Money(orderItem.price()))
+                            .quantity(orderItem.quantity())
+                            .subTotal(new Money(orderItem.subTotal()))
                             .build())
         .collect(Collectors.toList());
     }
@@ -57,9 +68,9 @@ public class OrderDataMapper {
     private StreetAddress orderAddressToStreetAddress(OrderAddress orderAddress) {
         return new StreetAddress(
                 UUID.randomUUID(),
-                orderAddress.getStreet(),
-                orderAddress.getCity(),
-                orderAddress.getPostalCode()
+                orderAddress.street(),
+                orderAddress.city(),
+                orderAddress.postalCode()
         );
     }
 
