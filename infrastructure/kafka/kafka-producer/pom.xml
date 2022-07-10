@@ -11,9 +11,38 @@
 
     <artifactId>kafka-producer</artifactId>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.food.order</groupId>
+            <artifactId>kafka-model</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.food.order</groupId>
+            <artifactId>kafka-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.food.order</groupId>
+            <artifactId>order-core-domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.food.order</groupId>
+            <artifactId>common-domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-avro-serializer</artifactId>
+        </dependency>
+
+
+    </dependencies>
 
 </project>
