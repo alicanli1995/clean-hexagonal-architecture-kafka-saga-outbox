@@ -47,12 +47,13 @@ public class Money {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Money money)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
+        Money money = (Money) o;
         return amount.equals(money.amount);
     }
 
     @Override
     public int hashCode() {
-        return amount.hashCode();
+        return Objects.hash(amount);
     }
 }

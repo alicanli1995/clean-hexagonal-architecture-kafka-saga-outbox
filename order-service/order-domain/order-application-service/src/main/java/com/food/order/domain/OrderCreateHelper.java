@@ -31,7 +31,7 @@ public class OrderCreateHelper {
     @Transactional
     public OrderCreatedEvent persistOrder(CreateOrderCommand createOrderCommand) {
         log.info("createOrder: {}", createOrderCommand);
-        checkCustomer(createOrderCommand.getCustomerId());
+        checkCustomer(createOrderCommand.customerId());
         Restaurant restaurant = checkRestaurant(createOrderCommand);
         var order = orderDataMapper.createOrderCommandToOrder(createOrderCommand);
         var createdEventOrder = orderDomainService.validateAndInitiateOrder(order, restaurant);
@@ -44,7 +44,7 @@ public class OrderCreateHelper {
         return restaurantRepository.findRestaurantInformation
                         (orderDataMapper.createOrderCommandToRestaurant(createOrderCommand))
                 .orElseThrow(() -> new OrderDomainException("Restaurant not found. " +
-                        "Please check restaurant id: " + createOrderCommand.getRestaurantId()));
+                        "Please check restaurant id: " + createOrderCommand.restaurantId()));
     }
 
 
