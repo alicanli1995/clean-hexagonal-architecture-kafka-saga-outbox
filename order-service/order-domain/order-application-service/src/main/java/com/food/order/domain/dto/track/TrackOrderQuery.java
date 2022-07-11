@@ -1,6 +1,5 @@
 package com.food.order.domain.dto.track;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 import javax.validation.constraints.NotNull;
