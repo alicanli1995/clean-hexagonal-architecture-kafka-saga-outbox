@@ -1,7 +1,7 @@
 package com.food.order.system.domain.entity;
 
-import com.food.order.domain.entity.AggregateRoot;
-import com.food.order.domain.valueobject.RestaurantId;
+import com.food.order.sysyem.entity.AggregateRoot;
+import com.food.order.sysyem.valueobject.RestaurantId;
 
 import java.util.List;
 

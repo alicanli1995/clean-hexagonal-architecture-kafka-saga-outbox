@@ -3,6 +3,7 @@ package com.food.order.system.data.access.order.entity;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 
 @Getter
@@ -13,17 +14,18 @@ import java.io.Serializable;
 public class OrderItemEntityId implements Serializable {
 
     private Long id;
-    private OrderEntity order;
+    private OrderEntity orderEntity;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof OrderItemEntityId that)) return false;
-        return id.equals(that.id);
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderItemEntityId that = (OrderItemEntityId) o;
+        return id.equals(that.id) && orderEntity.equals(that.orderEntity);
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return Objects.hash(id, orderEntity);
     }
 }

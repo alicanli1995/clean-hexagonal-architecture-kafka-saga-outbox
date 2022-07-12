@@ -1,6 +1,6 @@
 package com.food.order.system.data.access.order.entity;
 
-import com.food.order.domain.valueobject.OrderStatus;
+import com.food.order.sysyem.valueobject.OrderStatus;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 

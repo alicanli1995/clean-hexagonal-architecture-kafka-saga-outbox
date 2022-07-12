@@ -1,6 +1,6 @@
 package com.food.order.system.data.access.customer.adapter;
 
-import com.food.order.domain.ports.output.repository.CustomerRepository;
+import com.food.order.sysyem.ports.output.repository.CustomerRepository;
 import com.food.order.system.data.access.customer.mapper.CustomerDataAccessMapper;
 import com.food.order.system.data.access.customer.repository.CustomerJPARepository;
 import com.food.order.system.domain.entity.Customer;

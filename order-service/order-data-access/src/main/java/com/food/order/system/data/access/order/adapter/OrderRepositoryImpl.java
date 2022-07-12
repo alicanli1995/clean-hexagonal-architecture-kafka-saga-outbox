@@ -1,6 +1,6 @@
 package com.food.order.system.data.access.order.adapter;
 
-import com.food.order.domain.ports.output.repository.OrderRepository;
+import com.food.order.sysyem.ports.output.repository.OrderRepository;
 import com.food.order.system.data.access.order.mapper.OrderDataAccessMapper;
 import com.food.order.system.data.access.order.repository.OrderJpaRepository;
 import com.food.order.system.domain.entity.Order;

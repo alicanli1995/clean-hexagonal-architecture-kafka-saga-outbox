@@ -67,25 +67,25 @@
             <dependency>
                 <groupId>com.food.order</groupId>
                 <artifactId>kafka-producer</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.food.order</groupId>
                 <artifactId>kafka-consumer</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.food.order</groupId>
                 <artifactId>kafka-model</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.food.order</groupId>
                 <artifactId>kafka-config</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>

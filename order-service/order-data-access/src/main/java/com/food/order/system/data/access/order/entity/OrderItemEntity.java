@@ -6,7 +6,6 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.UUID;
-
 @Entity
 @DynamicUpdate
 @Table(name = "order_items")

@@ -19,6 +19,21 @@
             <groupId>com.food.order</groupId>
             <artifactId>order-application-service</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.food.order</groupId>
+            <artifactId>kafka-producer</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.food.order</groupId>
+            <artifactId>kafka-consumer</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.food.order</groupId>
+            <artifactId>kafka-model</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
