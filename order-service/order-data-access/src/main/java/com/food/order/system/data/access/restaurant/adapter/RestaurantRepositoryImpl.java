@@ -1,6 +1,6 @@
 package com.food.order.system.data.access.restaurant.adapter;
 
-import com.food.order.domain.ports.output.repository.RestaurantRepository;
+import com.food.order.sysyem.ports.output.repository.RestaurantRepository;
 import com.food.order.system.data.access.restaurant.mapper.RestaurantDataAccessMapper;
 import com.food.order.system.data.access.restaurant.repository.RestaurantJpaRepository;
 import com.food.order.system.domain.entity.Restaurant;

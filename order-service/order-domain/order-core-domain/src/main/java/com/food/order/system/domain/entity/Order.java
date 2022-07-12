@@ -1,11 +1,11 @@
 package com.food.order.system.domain.entity;
 
-import com.food.order.domain.entity.AggregateRoot;
-import com.food.order.domain.valueobject.*;
+import com.food.order.sysyem.entity.AggregateRoot;
 import com.food.order.system.domain.exception.OrderDomainException;
 import com.food.order.system.domain.valueobject.OrderItemId;
 import com.food.order.system.domain.valueobject.StreetAddress;
 import com.food.order.system.domain.valueobject.TrackingId;
+import com.food.order.sysyem.valueobject.*;
 
 import java.util.List;
 import java.util.Objects;
