@@ -1,5 +1,10 @@
 package com.food.order.sysyem.mapper;
 
+import com.food.order.system.domain.entity.Order;
+import com.food.order.system.domain.entity.OrderItem;
+import com.food.order.system.domain.entity.Product;
+import com.food.order.system.domain.entity.Restaurant;
+import com.food.order.system.domain.valueobject.StreetAddress;
 import com.food.order.sysyem.dto.create.CreateOrderCommand;
 import com.food.order.sysyem.dto.create.CreateOrderResponse;
 import com.food.order.sysyem.dto.create.OrderAddress;
@@ -8,16 +13,10 @@ import com.food.order.sysyem.valueobject.CustomerId;
 import com.food.order.sysyem.valueobject.Money;
 import com.food.order.sysyem.valueobject.ProductId;
 import com.food.order.sysyem.valueobject.RestaurantId;
-import com.food.order.system.domain.entity.Order;
-import com.food.order.system.domain.entity.OrderItem;
-import com.food.order.system.domain.entity.Product;
-import com.food.order.system.domain.entity.Restaurant;
-import com.food.order.system.domain.valueobject.StreetAddress;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Component
 public class OrderDataMapper {
@@ -62,7 +61,7 @@ public class OrderDataMapper {
                             .quantity(orderItem.quantity())
                             .subTotal(new Money(orderItem.subTotal()))
                             .build())
-        .collect(Collectors.toList());
+        .toList();
     }
 
     private StreetAddress orderAddressToStreetAddress(OrderAddress orderAddress) {
