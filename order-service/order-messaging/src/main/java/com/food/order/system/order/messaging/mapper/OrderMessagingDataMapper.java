@@ -1,13 +1,13 @@
 package com.food.order.system.order.messaging.mapper;
 
+import com.food.order.system.domain.event.OrderCancelledEvent;
+import com.food.order.system.domain.event.OrderCreatedEvent;
+import com.food.order.system.domain.event.OrderPaidEvent;
+import com.food.order.system.kafka.order.avro.model.*;
 import com.food.order.sysyem.dto.message.PaymentResponse;
 import com.food.order.sysyem.dto.message.RestaurantApprovalResponse;
 import com.food.order.sysyem.valueobject.OrderApprovalStatus;
 import com.food.order.sysyem.valueobject.PaymentStatus;
-import com.food.order.system.domain.event.OrderCancelledEvent;
-import com.food.order.system.domain.event.OrderCreatedEvent;
-import com.food.order.system.domain.event.OrderPaidEvent;
-import com.food.ordering.system.kafka.order.avro.model.*;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -15,20 +15,20 @@ import java.util.UUID;
 @Component
 public class OrderMessagingDataMapper {
 
-    public PaymentRequestAvroModel orderCreatedEventToPaymenRequestAvroModel(OrderCreatedEvent orderCreatedEvent) {
+    public PaymentRequestAvroModel orderCreatedEventToPaymentRequestAvroModel(OrderCreatedEvent orderCreatedEvent) {
         var order = orderCreatedEvent.getOrder();
         return PaymentRequestAvroModel.newBuilder()
-                .setOrderId(order.getId().getValue().toString())
+                .setId(UUID.randomUUID().toString())
                 .setSagaId("")
                 .setCustomerId(order.getCustomerId().getValue().toString())
-                .setId(UUID.randomUUID().toString())
+                .setOrderId(order.getId().getValue().toString())
                 .setPrice(order.getPrice().getAmount())
                 .setCreatedAt(orderCreatedEvent.getCreatedAt().toInstant())
                 .setPaymentOrderStatus(PaymentOrderStatus.PENDING)
                 .build();
     }
 
-    public PaymentRequestAvroModel orderCancelledEventToPaymenRequestAvroModel(OrderCancelledEvent orderCancelledEvent) {
+    public PaymentRequestAvroModel orderCancelledEventToPaymentRequestAvroModel(OrderCancelledEvent orderCancelledEvent) {
         var order = orderCancelledEvent.getOrder();
         return PaymentRequestAvroModel.newBuilder()
                 .setOrderId(order.getId().getValue().toString())
@@ -48,7 +48,7 @@ public class OrderMessagingDataMapper {
                 .setOrderId(order.getId().getValue().toString())
                 .setRestaurantId(order.getRestaurantId().getValue().toString())
                 .setProducts(order.getItems().stream()
-                        .map(item -> com.food.ordering.system.kafka.order.avro.model.Product.newBuilder()
+                        .map(item -> Product.newBuilder()
                                 .setId(item.getId().getValue().toString())
                                 .setQuantity(item.getQuantity())
                                 .build())

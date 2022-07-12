@@ -11,8 +11,8 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 public class OrderKafkaMessageHelper {
 
     public <T> ListenableFutureCallback<SendResult<String, T>> getKafkaCallBack
-            (String responseTopicName, T requestAvroModel,String orderId, String requestAvroModelName) {
-        return new ListenableFutureCallback<SendResult<String , T>>() {
+            (String responseTopicName, T t,String orderId, String requestAvroModelName) {
+        return new ListenableFutureCallback<>() {
             @Override
             public void onFailure(Throwable ex) {
                 log.error("Error while sending " + requestAvroModelName +

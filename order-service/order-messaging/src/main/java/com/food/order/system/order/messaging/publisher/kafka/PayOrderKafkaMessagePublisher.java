@@ -5,7 +5,7 @@ import com.food.order.sysyem.ports.output.message.publisher.restaurantapproval.O
 import com.food.order.system.domain.event.OrderPaidEvent;
 import com.food.order.system.kafka.producer.service.KafkaProducer;
 import com.food.order.system.order.messaging.mapper.OrderMessagingDataMapper;
-import com.food.ordering.system.kafka.order.avro.model.RestaurantApprovalRequestAvroModel;
+import com.food.order.system.kafka.order.avro.model.RestaurantApprovalRequestAvroModel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

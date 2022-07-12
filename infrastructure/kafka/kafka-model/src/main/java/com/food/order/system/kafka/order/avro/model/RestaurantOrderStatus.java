@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.food.ordering.system.kafka.order.avro.model;
+package com.food.order.system.kafka.order.avro.model;
 @org.apache.avro.specific.AvroGenerated
 public enum RestaurantOrderStatus implements org.apache.avro.generic.GenericEnumSymbol<RestaurantOrderStatus> {
   PAID  ;
