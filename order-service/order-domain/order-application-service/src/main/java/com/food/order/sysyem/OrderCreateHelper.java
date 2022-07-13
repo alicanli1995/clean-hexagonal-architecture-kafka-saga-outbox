@@ -1,6 +1,7 @@
 package com.food.order.sysyem;
 
 import com.food.order.sysyem.dto.create.CreateOrderCommand;
+import com.food.order.sysyem.event.publisher.DomainEventPublisher;
 import com.food.order.sysyem.mapper.OrderDataMapper;
 import com.food.order.sysyem.ports.output.repository.CustomerRepository;
 import com.food.order.sysyem.ports.output.repository.OrderRepository;
@@ -27,6 +28,7 @@ public class OrderCreateHelper {
     private final CustomerRepository customerRepository;
     private final RestaurantRepository restaurantRepository;
     private final OrderDataMapper orderDataMapper;
+    private final DomainEventPublisher<OrderCreatedEvent> publisher;
 
     @Transactional
     public OrderCreatedEvent persistOrder(CreateOrderCommand createOrderCommand) {
@@ -34,7 +36,7 @@ public class OrderCreateHelper {
         checkCustomer(createOrderCommand.customerId());
         Restaurant restaurant = checkRestaurant(createOrderCommand);
         var order = orderDataMapper.createOrderCommandToOrder(createOrderCommand);
-        var createdEventOrder = orderDomainService.validateAndInitiateOrder(order, restaurant);
+        var createdEventOrder = orderDomainService.validateAndInitiateOrder(order, restaurant,publisher);
         saveOrder(order);
         log.info("Created Order Event : {}", createdEventOrder);
         return createdEventOrder;

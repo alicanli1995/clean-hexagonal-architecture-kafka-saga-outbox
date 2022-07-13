@@ -28,7 +28,7 @@ public class Money {
                 this.amount.compareTo(other.amount) > 0;
     }
 
-    public Money substract(Money other) {
+    public Money subtract(Money other) {
         return new Money(setScale(this.amount.subtract(other.getAmount())));
     }
 
