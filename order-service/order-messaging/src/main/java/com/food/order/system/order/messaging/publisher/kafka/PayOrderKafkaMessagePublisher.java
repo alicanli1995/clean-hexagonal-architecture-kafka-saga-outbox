@@ -1,11 +1,12 @@
 package com.food.order.system.order.messaging.publisher.kafka;
 
-import com.food.order.sysyem.config.OrderServiceConfigData;
-import com.food.order.sysyem.ports.output.message.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
 import com.food.order.system.domain.event.OrderPaidEvent;
+import com.food.order.system.kafka.order.avro.model.RestaurantApprovalRequestAvroModel;
+import com.food.order.system.kafka.producer.KafkaMessageHelper;
 import com.food.order.system.kafka.producer.service.KafkaProducer;
 import com.food.order.system.order.messaging.mapper.OrderMessagingDataMapper;
-import com.food.order.system.kafka.order.avro.model.RestaurantApprovalRequestAvroModel;
+import com.food.order.sysyem.config.OrderServiceConfigData;
+import com.food.order.sysyem.ports.output.message.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,7 @@ public class PayOrderKafkaMessagePublisher implements OrderPaidRestaurantRequest
     private final OrderMessagingDataMapper orderMessagingDataMapper;
     private final OrderServiceConfigData configData;
     private final KafkaProducer<String, RestaurantApprovalRequestAvroModel> kafkaProducer;
-    private final OrderKafkaMessageHelper orderKafkaMessageHelper;
+    private final KafkaMessageHelper kafkaMessageHelper;
 
     @Override
     public void publish(OrderPaidEvent event) {
@@ -32,7 +33,7 @@ public class PayOrderKafkaMessagePublisher implements OrderPaidRestaurantRequest
             kafkaProducer.send(configData.getRestaurantApprovalRequestTopicName(),
                     orderId,
                     message,
-                    orderKafkaMessageHelper.getKafkaCallBack(configData.getRestaurantApprovalRequestTopicName(), message,
+                    kafkaMessageHelper.getKafkaCallBack(configData.getRestaurantApprovalRequestTopicName(), message,
                             orderId,
                             "RestaurantApprovalRequestAvroModel"));
 

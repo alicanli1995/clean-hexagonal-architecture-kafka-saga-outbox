@@ -1,4 +1,4 @@
-package com.food.order.system.order.messaging.publisher.kafka;
+package com.food.order.system.kafka.producer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.RecordMetadata;
@@ -8,7 +8,7 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 
 @Component
 @Slf4j
-public class OrderKafkaMessageHelper {
+public class KafkaMessageHelper {
 
     public <T> ListenableFutureCallback<SendResult<String, T>> getKafkaCallBack
             (String responseTopicName, T t,String orderId, String requestAvroModelName) {
