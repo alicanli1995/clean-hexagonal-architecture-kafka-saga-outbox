@@ -1,5 +1,5 @@
 {
-    "namespace": "com.food.ordering.system.kafka.order.avro.model",
+    "namespace": "com.food.order.system.kafka.order.avro.model",
     "type": "record",
     "name": "RestaurantApprovalResponseAvroModel",
     "fields": [

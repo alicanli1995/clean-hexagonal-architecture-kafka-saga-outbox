@@ -1,11 +1,12 @@
 package com.food.order.system.order.messaging.publisher.kafka;
 
 import com.food.order.system.domain.event.OrderCancelledEvent;
+import com.food.order.system.kafka.order.avro.model.PaymentRequestAvroModel;
+import com.food.order.system.kafka.producer.KafkaMessageHelper;
 import com.food.order.system.kafka.producer.service.KafkaProducer;
 import com.food.order.system.order.messaging.mapper.OrderMessagingDataMapper;
 import com.food.order.sysyem.config.OrderServiceConfigData;
 import com.food.order.sysyem.ports.output.message.publisher.payment.OrderCancelledPaymentRequestMessagePublisher;
-import com.food.order.system.kafka.order.avro.model.PaymentRequestAvroModel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -19,7 +20,7 @@ public class CancelOrderKafkaMessagePublisher implements OrderCancelledPaymentRe
     private final OrderServiceConfigData configData;
     private final KafkaProducer<String, PaymentRequestAvroModel> kafkaProducer;
 
-    private final OrderKafkaMessageHelper orderKafkaMessageHelper;
+    private final KafkaMessageHelper kafkaMessageHelper;
 
     @Override
     public void publish(OrderCancelledEvent event) {
@@ -35,7 +36,7 @@ public class CancelOrderKafkaMessagePublisher implements OrderCancelledPaymentRe
                     configData.getPaymentRequestTopicName(),
                     orderId,
                     paymentRequestAvroModel,
-                    orderKafkaMessageHelper.getKafkaCallBack(configData.getPaymentRequestTopicName()
+                    kafkaMessageHelper.getKafkaCallBack(configData.getPaymentRequestTopicName()
                             ,paymentRequestAvroModel,
                             orderId,
                             "PaymentRequestAvroModel"));

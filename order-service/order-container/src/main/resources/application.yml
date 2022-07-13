@@ -5,10 +5,10 @@ logging:
     com.food.order.system : DEBUG
 
 order-service:
-  payment-request-topic-name: payment-request
-  payment-response-topic-name: payment-response
-  restaurant-approval-request-topic-name: restaurant-approval-request
-  restaurant-approval-response-topic-name: restaurant-approval-response
+  payment-request-topic-name: payment-request-value
+  payment-response-topic-name: payment-response-value
+  restaurant-approval-request-topic-name: restaurant-approval-request-value
+  restaurant-approval-response-topic-name: restaurant-approval-response-value
 
 spring:
   jpa:
