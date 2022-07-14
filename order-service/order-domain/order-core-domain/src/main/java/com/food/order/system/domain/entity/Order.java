@@ -53,7 +53,7 @@ public class Order extends AggregateRoot<OrderId> {
     }
 
     public void cancel(List<String> failureMessages){
-        if(Objects.equals(status, OrderStatus.CANCELLING) || Objects.equals(status, OrderStatus.PENDING))
+        if(!(Objects.equals(status, OrderStatus.CANCELLING) || Objects.equals(status, OrderStatus.PENDING)))
             throw new OrderDomainException("Order status is not correct for cancel operation !");
         status = OrderStatus.CANCELLED;
         updateFailureMessages(failureMessages);

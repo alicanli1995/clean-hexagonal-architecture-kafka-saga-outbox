@@ -13,7 +13,9 @@ import com.food.order.sysyem.valueobject.*;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import static com.food.order.system.domain.entity.Order.FAILURE_MESSAGE_DELIMITER;
 
@@ -30,7 +32,7 @@ public class OrderDataAccessMapper {
         orderEntity.setAddress(deliveryAddressToAddressEntity(order.getDeliveryAddress()));
         orderEntity.setPrice(order.getPrice().getAmount());
         orderEntity.setItems(orderItemsToOrderItemsEntity(order.getItems()));
-        orderEntity.setFailureMessages(order.getFailureMessages() !=  null ?
+        orderEntity.setFailureMessages(Objects.nonNull(order.getFailureMessages()) ?
                 String.join(FAILURE_MESSAGE_DELIMITER, order.getFailureMessages()) : "");
         orderEntity.getAddress().setOrder(orderEntity);
         orderEntity.getItems().forEach(item -> item.setOrderEntity(orderEntity));
@@ -47,9 +49,9 @@ public class OrderDataAccessMapper {
                 .items(orderItemsEntityToOrderItems(orderEntity.getItems()))
                 .trackingId(new TrackingId(orderEntity.getTrackingId()))
                 .status(orderEntity.getOrderStatus())
-                .failureMessages(orderEntity.getFailureMessages() != null ?
-                        List.of(orderEntity.getFailureMessages().split(FAILURE_MESSAGE_DELIMITER)) :
-                        new ArrayList<>())
+                .failureMessages(Objects.isNull(orderEntity.getFailureMessages())  ? new ArrayList<>() :
+                        new ArrayList<>(Arrays.asList(orderEntity.getFailureMessages()
+                                .split(FAILURE_MESSAGE_DELIMITER))))
                 .build();
     }
 

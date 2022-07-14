@@ -75,8 +75,7 @@ AS
     p.id AS product_id,
     p.name AS product_name,
     p.price AS product_price,
-    p.available AS product_available,
-    r.active AS product_active
+    p.available AS product_active
    FROM restaurant.restaurants r,
     restaurant.products p,
     restaurant.restaurant_products rp
