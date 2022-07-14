@@ -49,7 +49,7 @@ public class OrderMessagingDataMapper {
                 .setRestaurantId(order.getRestaurantId().getValue().toString())
                 .setProducts(order.getItems().stream()
                         .map(item -> Product.newBuilder()
-                                .setId(item.getId().getValue().toString())
+                                .setId(item.getProduct().getId().getValue().toString())
                                 .setQuantity(item.getQuantity())
                                 .build())
                         .toList())

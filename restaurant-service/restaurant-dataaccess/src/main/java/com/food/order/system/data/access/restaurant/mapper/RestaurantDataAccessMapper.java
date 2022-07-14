@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Component
 public class RestaurantDataAccessMapper {
@@ -39,7 +38,7 @@ public class RestaurantDataAccessMapper {
                                 .price(new Money(entity.getProductPrice()))
                                 .available(entity.getProductActive())
                                 .build())
-                .collect(Collectors.toList());
+                .toList();
 
         return Restaurant.builder()
                 .restaurantId(new RestaurantId(restaurantEntity.getRestaurantId()))

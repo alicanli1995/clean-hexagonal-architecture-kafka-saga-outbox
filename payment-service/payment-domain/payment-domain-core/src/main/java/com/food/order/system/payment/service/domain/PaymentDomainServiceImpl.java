@@ -100,7 +100,9 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
                 .reduce(Money.ZERO, Money::add);
     }
 
-    private void updateCreditHistory(Payment payment, List<CreditHistory> creditHistory, TransactionType transactionType) {
+    private void updateCreditHistory(Payment payment,
+                                     List<CreditHistory> creditHistory,
+                                     TransactionType transactionType) {
         creditHistory.add(
                 CreditHistory.builder()
                         .id(new CreditHistoryId(UUID.randomUUID()))

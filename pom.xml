@@ -63,6 +63,13 @@
 
             <dependency>
                 <groupId>com.food.order</groupId>
+                <artifactId>saga</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.food.order</groupId>
                 <artifactId>payment-domain-core</artifactId>
                 <version>${project.version}</version>
             </dependency>

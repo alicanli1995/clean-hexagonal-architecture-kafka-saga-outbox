@@ -9,7 +9,7 @@ import com.food.order.system.restaurant.domain.core.event.OrderApprovedEvent;
 import com.food.order.system.restaurant.domain.core.event.OrderRejectedEvent;
 import com.food.order.sysyem.valueobject.ProductId;
 import com.food.order.sysyem.valueobject.RestaurantOrderStatus;
-import com.food.ordery.system.restaurant.domain.service.dto.RestaurantApprovalRequest;
+import com.food.order.system.restaurant.domain.service.dto.RestaurantApprovalRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

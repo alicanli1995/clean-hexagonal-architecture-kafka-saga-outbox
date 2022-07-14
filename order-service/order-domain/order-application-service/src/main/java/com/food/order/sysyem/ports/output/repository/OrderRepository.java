@@ -9,6 +9,8 @@ public interface OrderRepository {
 
     Order save(Order order);
 
+    Optional<Order> findById(String trackingId);
+
     Optional<Order> findByTrackingId(TrackingId trackingId);
 
 
