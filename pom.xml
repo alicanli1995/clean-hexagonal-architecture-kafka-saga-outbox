@@ -100,15 +100,46 @@
 
             <dependency>
                 <groupId>com.food.order</groupId>
-                <artifactId>restaurant-domain-core</artifactId>
+                <artifactId>kafka-producer</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.food.order</groupId>
-                <artifactId>kafka-producer</artifactId>
+                <artifactId>restaurant-application-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.food.order</groupId>
+                <artifactId>common-data-access</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.food.order</groupId>
+                <artifactId>restaurant-dataaccess</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.food.order</groupId>
+                <artifactId>restaurant-messaging</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.food.order</groupId>
+                <artifactId>restaurant-core-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.food.order</groupId>
+                <artifactId>restaurant-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
 
             <dependency>
                 <groupId>com.food.order</groupId>

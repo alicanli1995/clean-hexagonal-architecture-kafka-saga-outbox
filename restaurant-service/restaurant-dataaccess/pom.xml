@@ -12,4 +12,27 @@
     <artifactId>restaurant-dataaccess</artifactId>
 
 
+    <dependencies>
+
+        <dependency>
+            <groupId>com.food.order</groupId>
+            <artifactId>restaurant-application-service</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.food.order</groupId>
+            <artifactId>common-data-access</artifactId>
+        </dependency>
+
+    </dependencies>
 </project>

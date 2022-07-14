@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.food.order</groupId>
-            <artifactId>restaurant-domain-core</artifactId>
+            <artifactId>restaurant-core-domain</artifactId>
         </dependency>
 
         <dependency>

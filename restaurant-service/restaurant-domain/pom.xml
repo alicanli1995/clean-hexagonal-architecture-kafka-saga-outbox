@@ -8,14 +8,14 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <modules>
-        <module>restaurant-domain-core</module>
-        <module>restaurant-application-service</module>
-    </modules>
+    <artifactId>restaurant-domain</artifactId>
     <packaging>pom</packaging>
 
-    <artifactId>restaurant-domain</artifactId>
+    <modules>
+        <module>restaurant-core-domain</module>
+        <module>restaurant-application-service</module>
+    </modules>
+
 
 
 
