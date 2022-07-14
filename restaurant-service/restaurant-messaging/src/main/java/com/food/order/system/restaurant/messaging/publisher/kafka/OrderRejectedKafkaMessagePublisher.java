@@ -6,8 +6,8 @@ import com.food.order.system.kafka.producer.KafkaMessageHelper;
 import com.food.order.system.kafka.producer.service.KafkaProducer;
 import com.food.order.system.restaurant.domain.core.event.OrderRejectedEvent;
 import com.food.order.system.restaurant.messaging.mapper.RestaurantMessagingDataMapper;
-import com.food.ordery.system.restaurant.domain.service.config.RestaurantServiceConfig;
-import com.food.ordery.system.restaurant.domain.service.ports.output.message.publisher.OrderRejectedMessagePublisher;
+import com.food.order.system.restaurant.domain.service.config.RestaurantServiceConfigData;
+import com.food.order.system.restaurant.domain.service.ports.output.message.publisher.OrderRejectedMessagePublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,7 @@ public class OrderRejectedKafkaMessagePublisher implements OrderRejectedMessageP
 
     private final RestaurantMessagingDataMapper restaurantMessagingDataMapper;
     private final KafkaProducer<String, RestaurantApprovalResponseAvroModel> kafkaProducer;
-    private final RestaurantServiceConfig restaurantServiceConfigData;
+    private final RestaurantServiceConfigData restaurantServiceConfigData;
     private final KafkaMessageHelper kafkaMessageHelper;
 
 
