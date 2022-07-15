@@ -4,15 +4,14 @@ import com.food.order.system.domain.entity.Order;
 import com.food.order.system.domain.entity.OrderItem;
 import com.food.order.system.domain.entity.Product;
 import com.food.order.system.domain.entity.Restaurant;
+import com.food.order.system.domain.event.OrderCreatedEvent;
 import com.food.order.system.domain.valueobject.StreetAddress;
 import com.food.order.sysyem.dto.create.CreateOrderCommand;
 import com.food.order.sysyem.dto.create.CreateOrderResponse;
 import com.food.order.sysyem.dto.create.OrderAddress;
 import com.food.order.sysyem.dto.track.TrackOrderResponse;
-import com.food.order.sysyem.valueobject.CustomerId;
-import com.food.order.sysyem.valueobject.Money;
-import com.food.order.sysyem.valueobject.ProductId;
-import com.food.order.sysyem.valueobject.RestaurantId;
+import com.food.order.sysyem.outbox.model.payment.OrderPaymentEventPayload;
+import com.food.order.sysyem.valueobject.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -20,6 +19,16 @@ import java.util.UUID;
 
 @Component
 public class OrderDataMapper {
+
+    public OrderPaymentEventPayload orderCreatedEventToOrderPaymentEventPayload(OrderCreatedEvent order) {
+        return OrderPaymentEventPayload.builder()
+                .orderId(order.getOrder().getId().getValue().toString())
+                .customerId(order.getOrder().getCustomerId().getValue().toString())
+                .price(order.getOrder().getPrice().getAmount())
+                .createdAt(order.getCreatedAt())
+                .paymentOrderStatus(PaymentOrderStatus.PENDING.name())
+                .build();
+    }
 
     public TrackOrderResponse orderToTrackOrderResponse(Order order) {
 

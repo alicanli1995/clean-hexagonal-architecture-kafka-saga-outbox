@@ -6,7 +6,6 @@ import com.food.order.system.saga.SagaStep;
 import com.food.order.sysyem.dto.message.RestaurantApprovalResponse;
 import com.food.order.sysyem.event.EmptyEvent;
 import com.food.order.sysyem.helper.OrderSagaHelper;
-import com.food.order.sysyem.ports.output.message.publisher.payment.OrderCancelledPaymentRequestMessagePublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -18,8 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderApprovalSaga implements SagaStep<RestaurantApprovalResponse, EmptyEvent, OrderCancelledEvent> {
 
     private final OrderDomainService orderDomainService;
-    private final OrderCancelledPaymentRequestMessagePublisher messagePublisher;
     private final OrderSagaHelper orderSagaHelper;
+
+
 
     @Override
     @Transactional
@@ -38,7 +38,9 @@ public class OrderApprovalSaga implements SagaStep<RestaurantApprovalResponse, E
     public OrderCancelledEvent rollback(RestaurantApprovalResponse data) {
         log.info("Approving order with id: {}", data.getOrderId());
         var order = orderSagaHelper.findOrder(data.getOrderId());
-        var cancelEvent = orderDomainService.cancelOrderPayment(order,data.getFailureMessages(),
+        var cancelEvent = orderDomainService.cancelOrderPayment
+                (order,
+                data.getFailureMessages(),
                 messagePublisher);
         orderSagaHelper.saveOrder(order);
         log.info("Order cancelled: {}", order);

@@ -6,7 +6,6 @@ import com.food.order.system.saga.SagaStep;
 import com.food.order.sysyem.dto.message.PaymentResponse;
 import com.food.order.sysyem.event.EmptyEvent;
 import com.food.order.sysyem.helper.OrderSagaHelper;
-import com.food.order.sysyem.ports.output.message.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
