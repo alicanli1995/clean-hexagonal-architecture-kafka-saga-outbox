@@ -28,7 +28,6 @@ public class OrderCreateHelper {
     private final CustomerRepository customerRepository;
     private final RestaurantRepository restaurantRepository;
     private final OrderDataMapper orderDataMapper;
-    private final DomainEventPublisher<OrderCreatedEvent> publisher;
 
     @Transactional
     public OrderCreatedEvent persistOrder(CreateOrderCommand createOrderCommand) {
@@ -36,7 +35,8 @@ public class OrderCreateHelper {
         checkCustomer(createOrderCommand.customerId());
         Restaurant restaurant = checkRestaurant(createOrderCommand);
         var order = orderDataMapper.createOrderCommandToOrder(createOrderCommand);
-        var createdEventOrder = orderDomainService.validateAndInitiateOrder(order, restaurant,publisher);
+        var createdEventOrder = orderDomainService.validateAndInitiateOrder
+                (order, restaurant);
         saveOrder(order);
         log.info("Created Order Event : {}", createdEventOrder);
         return createdEventOrder;

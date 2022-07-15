@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>saga</module>
+        <module>outbox</module>
     </modules>
 
 

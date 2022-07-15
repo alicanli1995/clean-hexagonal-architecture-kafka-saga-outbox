@@ -45,6 +45,12 @@
 
             <dependency>
                 <groupId>com.food.order</groupId>
+                <artifactId>outbox</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.food.order</groupId>
                 <artifactId>payment-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>

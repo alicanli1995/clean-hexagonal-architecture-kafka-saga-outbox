@@ -22,8 +22,7 @@ public class RestaurantApprovalResponseMessageListenerImpl implements Restaurant
 
     @Override
     public void orderRejected(RestaurantApprovalResponse restaurantApprovalResponse) {
-        var event = orderApprovalSaga.rollback(restaurantApprovalResponse);
+        orderApprovalSaga.rollback(restaurantApprovalResponse);
         log.info("Order Rejected: {}", restaurantApprovalResponse);
-        event.fire();
     }
 }
