@@ -7,15 +7,10 @@ import java.time.ZonedDateTime;
 
 public class OrderPaidEvent extends OrderEvent {
 
-    private final DomainEventPublisher<OrderPaidEvent> publisher;
 
-    public OrderPaidEvent(Order order, ZonedDateTime utc, DomainEventPublisher<OrderPaidEvent> publisher) {
+    public OrderPaidEvent(Order order, ZonedDateTime utc) {
         super(order, utc);
-        this.publisher = publisher;
     }
 
-    @Override
-    public void fire() {
-        publisher.publish(this);
-    }
+
 }

@@ -1,10 +1,14 @@
 package com.food.order.sysyem.outbox.scheduler.approval;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.food.order.system.domain.exception.OrderDomainException;
 import com.food.order.system.outbox.OutboxStatus;
 import com.food.order.system.saga.SagaStatus;
+import com.food.order.sysyem.outbox.model.approval.OrderApprovalEventPayload;
 import com.food.order.sysyem.outbox.model.approval.OrderApprovalOutboxMessage;
 import com.food.order.sysyem.ports.output.repository.ApprovalOutboxRepository;
+import com.food.order.sysyem.valueobject.OrderStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -23,6 +27,8 @@ import static com.food.order.system.outbox.order.SagaConst.ORDER_PROCESSING_SAGA
 public class ApprovalOutboxHelper {
 
     private final ApprovalOutboxRepository approvalOutboxRepository;
+
+    private final ObjectMapper objectMapper;
 
     @Transactional(readOnly = true)
     public Optional<List<OrderApprovalOutboxMessage>> getApprovalOutboxMessageByOutboxStatusAndSagaStatus
@@ -62,5 +68,34 @@ public class ApprovalOutboxHelper {
                 outboxStatus,
                 sagaStatus);
 
+    }
+
+    @Transactional
+    public void saveApprovalOutboxMessage(OrderApprovalEventPayload payload,
+                                          OrderStatus orderStatus,
+                                            SagaStatus sagaStatus,
+                                            OutboxStatus outboxStatus,
+                                            UUID sagaId) {
+
+        save(OrderApprovalOutboxMessage.builder()
+                .id(UUID.randomUUID())
+                .type(ORDER_PROCESSING_SAGA)
+                .createdAt(payload.getCreatedAt())
+                .orderStatus(orderStatus)
+                .sagaStatus(sagaStatus)
+                .outboxStatus(outboxStatus)
+                .sagaId(sagaId)
+                .payload(createPayload(payload))
+                .build());
+
+
+    }
+
+    private String createPayload(OrderApprovalEventPayload payload) {
+        try {
+            return objectMapper.writeValueAsString(payload);
+        } catch (JsonProcessingException e) {
+            throw new OrderDomainException("Failed to create payload for JSON message");
+        }
     }
 }

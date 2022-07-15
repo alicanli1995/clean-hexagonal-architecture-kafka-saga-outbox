@@ -5,11 +5,14 @@ import com.food.order.system.domain.entity.OrderItem;
 import com.food.order.system.domain.entity.Product;
 import com.food.order.system.domain.entity.Restaurant;
 import com.food.order.system.domain.event.OrderCreatedEvent;
+import com.food.order.system.domain.event.OrderPaidEvent;
 import com.food.order.system.domain.valueobject.StreetAddress;
 import com.food.order.sysyem.dto.create.CreateOrderCommand;
 import com.food.order.sysyem.dto.create.CreateOrderResponse;
 import com.food.order.sysyem.dto.create.OrderAddress;
 import com.food.order.sysyem.dto.track.TrackOrderResponse;
+import com.food.order.sysyem.outbox.model.approval.OrderApprovalEventPayload;
+import com.food.order.sysyem.outbox.model.approval.OrderApprovalProduct;
 import com.food.order.sysyem.outbox.model.payment.OrderPaymentEventPayload;
 import com.food.order.sysyem.valueobject.*;
 import org.springframework.stereotype.Component;
@@ -19,6 +22,22 @@ import java.util.UUID;
 
 @Component
 public class OrderDataMapper {
+
+    public OrderApprovalEventPayload orderPaidEventToOrderApprovalEventPayload(OrderPaidEvent orderPaidEvent) {
+        return OrderApprovalEventPayload.builder()
+                .orderId(orderPaidEvent.getOrder().getId().getValue().toString())
+                .restaurantId(orderPaidEvent.getOrder().getRestaurantId().getValue().toString())
+                .restaurantOrderStatus(RestaurantOrderStatus.PAID.name())
+                .products(orderPaidEvent.getOrder().getItems().stream()
+                        .map(orderItem -> OrderApprovalProduct.builder()
+                                .id(orderItem.getProduct().getId().getValue().toString())
+                                .quantity(orderItem.getQuantity())
+                                .build())
+                        .toList())
+                .price(orderPaidEvent.getOrder().getPrice().getAmount())
+                .createdAt(orderPaidEvent.getCreatedAt())
+                .build();
+    }
 
     public OrderPaymentEventPayload orderCreatedEventToOrderPaymentEventPayload(OrderCreatedEvent order) {
         return OrderPaymentEventPayload.builder()

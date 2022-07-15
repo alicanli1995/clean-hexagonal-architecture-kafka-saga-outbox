@@ -27,12 +27,16 @@ public class OrderPaymentOutboxMessage {
     private String type;
 
     private String payload;
+
     @Setter
     private SagaStatus sagaStatus;
+
     @Setter
     private OrderStatus orderStatus;
+
     @Setter
     private OutboxStatus outboxStatus;
+
     private int version;
 
 
