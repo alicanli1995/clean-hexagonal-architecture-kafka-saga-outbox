@@ -9,7 +9,7 @@ import com.food.order.system.domain.entity.Product;
 import com.food.order.system.domain.valueobject.OrderItemId;
 import com.food.order.system.domain.valueobject.StreetAddress;
 import com.food.order.system.domain.valueobject.TrackingId;
-import com.food.order.sysyem.valueobject.*;
+import com.food.order.system.valueobject.*;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

@@ -2,9 +2,9 @@ package com.food.order.system.payment.application.service.mapper;
 
 import com.food.order.system.payment.application.service.dto.PaymentRequest;
 import com.food.order.system.payment.service.domain.entity.Payment;
-import com.food.order.sysyem.valueobject.CustomerId;
-import com.food.order.sysyem.valueobject.Money;
-import com.food.order.sysyem.valueobject.OrderId;
+import com.food.order.system.valueobject.CustomerId;
+import com.food.order.system.valueobject.Money;
+import com.food.order.system.valueobject.OrderId;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

@@ -7,7 +7,7 @@ import com.food.order.system.payment.application.service.dto.PaymentRequest;
 import com.food.order.system.payment.service.domain.event.PaymentCancelledEvent;
 import com.food.order.system.payment.service.domain.event.PaymentCompletedEvent;
 import com.food.order.system.payment.service.domain.event.PaymentFailedEvent;
-import com.food.order.sysyem.valueobject.PaymentOrderStatus;
+import com.food.order.system.valueobject.PaymentOrderStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

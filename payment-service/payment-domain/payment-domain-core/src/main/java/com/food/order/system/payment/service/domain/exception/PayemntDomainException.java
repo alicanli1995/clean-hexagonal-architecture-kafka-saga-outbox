@@ -1,6 +1,6 @@
 package com.food.order.system.payment.service.domain.exception;
 
-import com.food.order.sysyem.exception.DomainException;
+import com.food.order.system.exception.DomainException;
 
 public class PayemntDomainException extends DomainException {
     public PayemntDomainException(String message) {

@@ -10,7 +10,7 @@ import com.food.order.system.restaurant.domain.service.ports.output.message.publ
 import com.food.order.system.restaurant.domain.service.ports.output.message.publisher.OrderRejectedMessagePublisher;
 import com.food.order.system.restaurant.domain.service.ports.output.repository.OrderApprovalRepository;
 import com.food.order.system.restaurant.domain.service.ports.output.repository.RestaurantRepository;
-import com.food.order.sysyem.valueobject.OrderId;
+import com.food.order.system.valueobject.OrderId;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

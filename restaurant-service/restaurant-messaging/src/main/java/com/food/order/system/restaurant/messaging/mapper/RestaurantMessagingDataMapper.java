@@ -7,8 +7,8 @@ import com.food.order.system.kafka.order.avro.model.RestaurantApprovalResponseAv
 import com.food.order.system.restaurant.domain.core.entity.Product;
 import com.food.order.system.restaurant.domain.core.event.OrderApprovedEvent;
 import com.food.order.system.restaurant.domain.core.event.OrderRejectedEvent;
-import com.food.order.sysyem.valueobject.ProductId;
-import com.food.order.sysyem.valueobject.RestaurantOrderStatus;
+import com.food.order.system.valueobject.ProductId;
+import com.food.order.system.valueobject.RestaurantOrderStatus;
 import com.food.order.system.restaurant.domain.service.dto.RestaurantApprovalRequest;
 import org.springframework.stereotype.Component;
 

@@ -9,9 +9,9 @@ import com.food.order.system.payment.service.domain.event.PaymentEvent;
 import com.food.order.system.payment.service.domain.event.PaymentFailedEvent;
 import com.food.order.system.payment.service.domain.valueobject.CreditHistoryId;
 import com.food.order.system.payment.service.domain.valueobject.TransactionType;
-import com.food.order.sysyem.event.publisher.DomainEventPublisher;
-import com.food.order.sysyem.valueobject.Money;
-import com.food.order.sysyem.valueobject.PaymentStatus;
+import com.food.order.system.event.publisher.DomainEventPublisher;
+import com.food.order.system.valueobject.Money;
+import com.food.order.system.valueobject.PaymentStatus;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.ZoneId;
@@ -19,7 +19,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
-import static com.food.order.sysyem.DomainConstants.UTC;
+import static com.food.order.system.DomainConstants.UTC;
 
 @Slf4j
 public class PaymentDomainServiceImpl implements PaymentDomainService {

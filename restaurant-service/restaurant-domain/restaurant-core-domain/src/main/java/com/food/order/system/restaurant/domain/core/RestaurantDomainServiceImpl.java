@@ -4,15 +4,15 @@ import com.food.order.system.restaurant.domain.core.entity.Restaurant;
 import com.food.order.system.restaurant.domain.core.event.OrderApprovalEvent;
 import com.food.order.system.restaurant.domain.core.event.OrderApprovedEvent;
 import com.food.order.system.restaurant.domain.core.event.OrderRejectedEvent;
-import com.food.order.sysyem.event.publisher.DomainEventPublisher;
-import com.food.order.sysyem.valueobject.OrderApprovalStatus;
+import com.food.order.system.event.publisher.DomainEventPublisher;
+import com.food.order.system.valueobject.OrderApprovalStatus;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-import static com.food.order.sysyem.DomainConstants.UTC;
+import static com.food.order.system.DomainConstants.UTC;
 
 @Slf4j
 public class RestaurantDomainServiceImpl implements RestaurantDomainService {

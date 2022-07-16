@@ -41,6 +41,10 @@
             <groupId>io.confluent</groupId>
             <artifactId>kafka-avro-serializer</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.food.order</groupId>
+            <artifactId>outbox</artifactId>
+        </dependency>
 
 
     </dependencies>
