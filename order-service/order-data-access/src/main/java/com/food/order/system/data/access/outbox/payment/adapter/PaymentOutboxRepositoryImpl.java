@@ -5,8 +5,8 @@ import com.food.order.system.data.access.outbox.payment.mapper.PaymentOutboxData
 import com.food.order.system.data.access.outbox.payment.repository.PaymentOutboxJpaRepository;
 import com.food.order.system.outbox.OutboxStatus;
 import com.food.order.system.saga.SagaStatus;
-import com.food.order.sysyem.outbox.model.payment.OrderPaymentOutboxMessage;
-import com.food.order.sysyem.ports.output.repository.PaymentOutboxRepository;
+import com.food.order.system.outbox.model.payment.OrderPaymentOutboxMessage;
+import com.food.order.system.ports.output.repository.PaymentOutboxRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

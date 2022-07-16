@@ -1,6 +1,6 @@
 package com.food.order.system.payment.data.access.payment.entity;
 
-import com.food.order.sysyem.valueobject.PaymentStatus;
+import com.food.order.system.valueobject.PaymentStatus;
 import lombok.*;
 
 import javax.persistence.*;

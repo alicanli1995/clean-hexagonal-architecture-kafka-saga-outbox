@@ -6,8 +6,8 @@ import com.food.order.system.data.access.outbox.restaurantapproval.mapper.Approv
 import com.food.order.system.data.access.outbox.restaurantapproval.repository.ApprovalOutboxJpaRepository;
 import com.food.order.system.outbox.OutboxStatus;
 import com.food.order.system.saga.SagaStatus;
-import com.food.order.sysyem.outbox.model.approval.OrderApprovalOutboxMessage;
-import com.food.order.sysyem.ports.output.repository.ApprovalOutboxRepository;
+import com.food.order.system.outbox.model.approval.OrderApprovalOutboxMessage;
+import com.food.order.system.ports.output.repository.ApprovalOutboxRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

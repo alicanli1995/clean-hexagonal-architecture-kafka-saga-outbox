@@ -1,7 +1,7 @@
 package com.food.order.system.payment.application.service.ports.output.repository;
 
 import com.food.order.system.payment.service.domain.entity.CreditHistory;
-import com.food.order.sysyem.valueobject.CustomerId;
+import com.food.order.system.valueobject.CustomerId;
 
 import java.util.List;
 import java.util.Optional;

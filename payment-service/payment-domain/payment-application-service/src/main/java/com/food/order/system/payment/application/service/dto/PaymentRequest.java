@@ -1,6 +1,6 @@
 package com.food.order.system.payment.application.service.dto;
 
-import com.food.order.sysyem.valueobject.PaymentOrderStatus;
+import com.food.order.system.valueobject.PaymentOrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

@@ -3,7 +3,7 @@ package com.food.order.system.data.access.outbox.payment.entity;
 
 import com.food.order.system.outbox.OutboxStatus;
 import com.food.order.system.saga.SagaStatus;
-import com.food.order.sysyem.valueobject.OrderStatus;
+import com.food.order.system.valueobject.OrderStatus;
 import lombok.*;
 
 import javax.persistence.*;

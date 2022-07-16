@@ -8,6 +8,8 @@ logging:
 payment-service:
   payment-request-topic-name: payment-request-value
   payment-response-topic-name: payment-response-value
+  outbox-scheduler-fixed-rate: 10000
+  outbox-scheduler-initial-delay: 10000
 
 spring:
   jpa:

@@ -1,8 +1,8 @@
 package com.food.order.system.restaurant.domain.core.entity;
 
-import com.food.order.sysyem.entity.BaseEntity;
-import com.food.order.sysyem.valueobject.Money;
-import com.food.order.sysyem.valueobject.ProductId;
+import com.food.order.system.entity.BaseEntity;
+import com.food.order.system.valueobject.Money;
+import com.food.order.system.valueobject.ProductId;
 
 public class Product extends BaseEntity<ProductId> {
 

@@ -8,10 +8,10 @@ import com.food.order.system.restaurant.domain.core.entity.OrderDetail;
 import com.food.order.system.restaurant.domain.core.entity.Product;
 import com.food.order.system.restaurant.domain.core.entity.Restaurant;
 import com.food.order.system.restaurant.domain.core.valueobject.OrderApprovalId;
-import com.food.order.sysyem.valueobject.Money;
-import com.food.order.sysyem.valueobject.OrderId;
-import com.food.order.sysyem.valueobject.ProductId;
-import com.food.order.sysyem.valueobject.RestaurantId;
+import com.food.order.system.valueobject.Money;
+import com.food.order.system.valueobject.OrderId;
+import com.food.order.system.valueobject.ProductId;
+import com.food.order.system.valueobject.RestaurantId;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

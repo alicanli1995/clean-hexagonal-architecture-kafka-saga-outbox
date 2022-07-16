@@ -6,7 +6,7 @@ import com.food.order.system.payment.data.access.credithistory.entity.CreditHist
 import com.food.order.system.payment.data.access.credithistory.mapper.CreditHistoryDataAccessMapper;
 import com.food.order.system.payment.data.access.credithistory.repository.CreditHistoryJpaRepository;
 import com.food.order.system.payment.service.domain.entity.CreditHistory;
-import com.food.order.sysyem.valueobject.CustomerId;
+import com.food.order.system.valueobject.CustomerId;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

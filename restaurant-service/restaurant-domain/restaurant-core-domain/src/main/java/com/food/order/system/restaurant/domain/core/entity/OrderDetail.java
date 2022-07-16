@@ -1,9 +1,9 @@
 package com.food.order.system.restaurant.domain.core.entity;
 
-import com.food.order.sysyem.entity.BaseEntity;
-import com.food.order.sysyem.valueobject.Money;
-import com.food.order.sysyem.valueobject.OrderId;
-import com.food.order.sysyem.valueobject.OrderStatus;
+import com.food.order.system.entity.BaseEntity;
+import com.food.order.system.valueobject.Money;
+import com.food.order.system.valueobject.OrderId;
+import com.food.order.system.valueobject.OrderStatus;
 
 import java.util.List;
 
