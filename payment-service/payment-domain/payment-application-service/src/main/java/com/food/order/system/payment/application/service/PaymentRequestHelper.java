@@ -13,6 +13,7 @@ import com.food.order.system.payment.service.domain.PaymentDomainService;
 import com.food.order.system.payment.service.domain.entity.CreditEntry;
 import com.food.order.system.payment.service.domain.entity.CreditHistory;
 import com.food.order.system.payment.service.domain.entity.Payment;
+import com.food.order.system.payment.service.domain.exception.PaymentNotFoundException;
 import com.food.order.system.valueobject.CustomerId;
 import com.food.order.system.valueobject.PaymentStatus;
 import lombok.RequiredArgsConstructor;
@@ -62,10 +63,6 @@ public class PaymentRequestHelper {
                 paymentEvent.getPayment().getStatus(),
                 OutboxStatus.STARTED,
                 UUID.fromString(paymentRequest.getSagaId()));
-
-
-
-
     }
 
     private boolean publishIfOutboxMessageProcessedForPayment(PaymentRequest paymentRequest,
@@ -91,7 +88,7 @@ public class PaymentRequestHelper {
         log.info("Received payment cancel event for id : {}", paymentRequest.getOrderId());
         var payment = paymentRepository.findByOrderId
                 (UUID.fromString(paymentRequest.getOrderId())).orElseThrow(
-                () -> new PaymentApplicationServiceException("Payment not found"));
+                () -> new PaymentNotFoundException("Payment not found"));
         var creditEntry = getCreditEntry(payment.getCustomerId());
         var creditHistory = getCreditHistory(payment.getCustomerId());
         List<String> failureMessage = new ArrayList<>();
