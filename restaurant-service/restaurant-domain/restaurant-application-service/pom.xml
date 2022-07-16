@@ -33,7 +33,18 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.food.order</groupId>
+            <artifactId>outbox</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.food.order</groupId>
+            <artifactId>saga</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-json</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
