@@ -1,10 +1,10 @@
 package com.food.order.system.payment.messaging.publisher.kafka;
 
+import com.food.order.system.event.publisher.DomainEventPublisher;
 import com.food.order.system.kafka.order.avro.model.PaymentResponseAvroModel;
 import com.food.order.system.kafka.producer.KafkaMessageHelper;
 import com.food.order.system.kafka.producer.service.KafkaProducer;
 import com.food.order.system.payment.application.service.config.PaymentServiceConfigData;
-import com.food.order.system.payment.application.service.ports.output.message.publisher.PaymentFailedMessagePublisher;
 import com.food.order.system.payment.messaging.mapper.PaymentMessagingDataMapper;
 import com.food.order.system.payment.service.domain.event.PaymentFailedEvent;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 @RequiredArgsConstructor
-public class PaymentFailedKafkaMessagePublisher implements PaymentFailedMessagePublisher {
+public class PaymentFailedKafkaMessagePublisher implements DomainEventPublisher<PaymentFailedEvent> {
 
     private final PaymentMessagingDataMapper paymentDataMapper;
     private final KafkaProducer<String , PaymentResponseAvroModel> kafkaProducer;
