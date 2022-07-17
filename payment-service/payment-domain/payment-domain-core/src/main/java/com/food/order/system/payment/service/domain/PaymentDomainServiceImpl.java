@@ -9,7 +9,6 @@ import com.food.order.system.payment.service.domain.event.PaymentEvent;
 import com.food.order.system.payment.service.domain.event.PaymentFailedEvent;
 import com.food.order.system.payment.service.domain.valueobject.CreditHistoryId;
 import com.food.order.system.payment.service.domain.valueobject.TransactionType;
-import com.food.order.system.event.publisher.DomainEventPublisher;
 import com.food.order.system.valueobject.Money;
 import com.food.order.system.valueobject.PaymentStatus;
 import lombok.extern.slf4j.Slf4j;
@@ -79,13 +78,13 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
         var totalDebitHistory = getTotalHistoryAmount(creditHistory, TransactionType.DEBIT);
 
         if (totalDebitHistory.isGreaterThan(totalCreditHistory)) {
-            failureMessages.add("Customer id " + creditEntry.getCustomerId() + " has insufficient credit");
-            log.error("Customer id {} has insufficient credit", creditEntry.getCustomerId());
+            failureMessages.add("Customer id " + creditEntry.getCustomerId().getValue() + " has insufficient credit");
+            log.error("Customer id {} has insufficient credit", creditEntry.getCustomerId().getValue());
         }
 
         if (!creditEntry.getTotalCreditAmount().equals(totalCreditHistory.subtract(totalDebitHistory))) {
-            failureMessages.add("Customer id " + creditEntry.getCustomerId() + " has total is not equal to credit history");
-            log.error("Customer id {} has total is not equal to credit history", creditEntry.getCustomerId());
+            failureMessages.add("Customer id " + creditEntry.getCustomerId().getValue() + " has total is not equal to credit history");
+            log.error("Customer id {} has total is not equal to credit history", creditEntry.getCustomerId().getValue());
         }
     }
 
@@ -115,8 +114,8 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
 
     private void validateCreditEntry(Payment payment, CreditEntry creditEntry, List<String> failureMessages) {
         if(payment.getPrice().isGreaterThan(creditEntry.getTotalCreditAmount())){
-            failureMessages.add("Customer id "+ payment.getCustomerId() + " , has insufficient credit amount" +
-                            creditEntry.getTotalCreditAmount() + " to pay for order id " + payment.getOrderId());
+            failureMessages.add("Customer id "+ payment.getCustomerId().getValue() + " , has insufficient credit amount" +
+                            creditEntry.getTotalCreditAmount().getAmount() + " to pay for order id " + payment.getOrderId().getValue());
             log.error("Payment price is greater than credit");
         }
     }
