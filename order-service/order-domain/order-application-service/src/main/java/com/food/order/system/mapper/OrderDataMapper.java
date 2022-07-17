@@ -1,9 +1,6 @@
 package com.food.order.system.mapper;
 
-import com.food.order.system.domain.entity.Order;
-import com.food.order.system.domain.entity.OrderItem;
-import com.food.order.system.domain.entity.Product;
-import com.food.order.system.domain.entity.Restaurant;
+import com.food.order.system.domain.entity.*;
 import com.food.order.system.domain.event.OrderCancelledEvent;
 import com.food.order.system.domain.event.OrderCreatedEvent;
 import com.food.order.system.domain.event.OrderPaidEvent;
@@ -11,6 +8,7 @@ import com.food.order.system.domain.valueobject.StreetAddress;
 import com.food.order.system.dto.create.CreateOrderCommand;
 import com.food.order.system.dto.create.CreateOrderResponse;
 import com.food.order.system.dto.create.OrderAddress;
+import com.food.order.system.dto.message.CustomerModel;
 import com.food.order.system.dto.track.TrackOrderResponse;
 import com.food.order.system.outbox.model.approval.OrderApprovalEventPayload;
 import com.food.order.system.outbox.model.approval.OrderApprovalProduct;
@@ -23,6 +21,14 @@ import java.util.UUID;
 
 @Component
 public class OrderDataMapper {
+
+    public Customer customerModelToCustomer(CustomerModel customerModel) {
+        return new Customer(new CustomerId(UUID.fromString(customerModel.getId())),
+                customerModel.getUsername(),
+                customerModel.getFirstName(),
+                customerModel.getLastName());
+    }
+
 
     public OrderPaymentEventPayload orderCancelledEventToOrderPaymentEventPayload(
             OrderCancelledEvent orderCancelledEvent) {
