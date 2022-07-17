@@ -34,7 +34,7 @@ public class RestaurantEntity {
 
     private BigDecimal productPrice;
 
-    private Boolean productActive;
+    private Boolean productAvailable;
 
     @Override
     public boolean equals(Object o) {
