@@ -51,6 +51,40 @@
 
             <dependency>
                 <groupId>com.food.order</groupId>
+                <artifactId>customer-domain-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.food.order</groupId>
+                <artifactId>customer-service-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.food.order</groupId>
+                <artifactId>customer-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.food.order</groupId>
+                <artifactId>customer-data-access</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.food.order</groupId>
+                <artifactId>customer-messaging</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.food.order</groupId>
                 <artifactId>payment-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
