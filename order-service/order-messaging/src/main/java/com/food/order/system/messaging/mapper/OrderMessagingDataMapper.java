@@ -1,5 +1,6 @@
 package com.food.order.system.messaging.mapper;
 
+import com.food.order.system.dto.message.CustomerModel;
 import com.food.order.system.dto.message.PaymentResponse;
 import com.food.order.system.dto.message.RestaurantApprovalResponse;
 import com.food.order.system.kafka.order.avro.model.*;
@@ -75,4 +76,13 @@ public class OrderMessagingDataMapper {
 
 
     }
+    public CustomerModel customerAvroModelToCustomerModel(CustomerAvroModel customerAvroModel) {
+        return CustomerModel.builder()
+                .id(customerAvroModel.getId())
+                .username(customerAvroModel.getUsername())
+                .firstName(customerAvroModel.getFirstName())
+                .lastName(customerAvroModel.getLastName())
+                .build();
+    }
+
 }

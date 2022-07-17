@@ -13,12 +13,14 @@ services:
       kafka-topics --bootstrap-server kafka-broker-1:9092 --topic payment-response-value --delete --if-exists
       kafka-topics --bootstrap-server kafka-broker-1:9092 --topic restaurant-approval-request-value --delete --if-exists
       kafka-topics --bootstrap-server kafka-broker-1:9092 --topic restaurant-approval-response-value --delete --if-exists
+      kafka-topics --bootstrap-server kafka-broker-1:9092 --topic customer-value --delete --if-exists
 
       echo -e 'Creating kafka topics'
       kafka-topics --bootstrap-server kafka-broker-1:9092 --create --if-not-exists --topic payment-request-value --replication-factor 3 --partitions 3
       kafka-topics --bootstrap-server kafka-broker-1:9092 --create --if-not-exists --topic payment-response-value --replication-factor 3 --partitions 3
       kafka-topics --bootstrap-server kafka-broker-1:9092 --create --if-not-exists --topic restaurant-approval-request-value --replication-factor 3 --partitions 3
       kafka-topics --bootstrap-server kafka-broker-1:9092 --create --if-not-exists --topic restaurant-approval-response-value --replication-factor 3 --partitions 3
+      kafka-topics --bootstrap-server kafka-broker-1:9092 --create --if-not-exists --topic customer-value --replication-factor 3 --partitions 3
 
 
       echo -e 'Successfully created the following topics:'
