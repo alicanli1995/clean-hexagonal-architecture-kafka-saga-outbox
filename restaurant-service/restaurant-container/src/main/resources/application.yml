@@ -22,14 +22,12 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=restaurant&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
-    password: postgres
+    password: admin
     driver-class-name: org.postgresql.Driver
-  sql:
-    init:
-      platform: postgres
-      mode: always
-      data-locations: classpath:init-data.sql
-      schema-locations: classpath:init-schema.sql
+    platform: postgres
+    schema: classpath:init-schema.sql
+    data: classpath:init-data.sql
+    initialization-mode: always
 
 kafka-config:
   bootstrap-servers: localhost:19092, localhost:29092, localhost:39092

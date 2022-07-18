@@ -1,5 +1,5 @@
 server:
-  port: 3232
+  port: 8181
 logging:
   level:
     com.food.order.system : DEBUG
@@ -24,13 +24,11 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=order&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
-    password: postgres
-    driverClassName: org.postgresql.Driver
-  sql:
-    init:
-      platform: postgres
-      mode: always
-      schema-locations: classpath:init-schema.sql
+    password: admin
+    driver-class-name: org.postgresql.Driver
+    platform: postgres
+    schema: classpath:init-schema.sql
+    initialization-mode: always
 
 kafka-config:
   bootstrap-servers: localhost:19092, localhost:29092, localhost:39092

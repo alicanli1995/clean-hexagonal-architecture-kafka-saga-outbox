@@ -16,13 +16,11 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=customer&binaryTransfer=true&reWriteBatchedInserts=true
     username: postgres
-    password: postgres
+    password: admin
     driver-class-name: org.postgresql.Driver
-  sql:
-    init:
-      mode: always
-      schema-locations: classpath:init-schema.sql
-      platform: postgres
+    platform: postgres
+    schema: classpath:init-schema.sql
+    initialization-mode: always
 
 kafka-config:
   bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
